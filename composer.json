@@ -1,0 +1,8 @@
+{
+    "name": "meddhed/construct",
+    "description": "test router POO",
+    "require-dev": {
+        "symfony/var-dumper": "^5.1"
+    },
+    "require": {}
+}
