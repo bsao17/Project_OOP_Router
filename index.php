@@ -4,7 +4,7 @@ require "vendor/autoload.php";
 
 use controllers\Router;
 
-$action = isset($_GET['acton']) ? $_GET['action'] : null;
+$action = isset($_GET['action']) ? $_GET['action'] : null;
 
 if($action != null){
     switch($action){
