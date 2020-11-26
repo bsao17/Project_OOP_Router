@@ -2,12 +2,10 @@
 
 namespace controllers;
 
+require "vendor/autoload.php";
+
+
 class Router{
-    /**
-     *constant link
-     */
-    const LINK_HOME = "src/views/home.html";
-    const LINK_SIGNIN = "src/views/signin.html";
 
     const ACTION = [
         "home",

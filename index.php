@@ -1,6 +1,10 @@
 <?php
 
 require "vendor/autoload.php";
+$loader = new \Twig\Loader\FilesystemLoader('src/views/templates');
+$twig = new \Twig\Environment($loader, [
+    'cache' => false,
+]);
 
 use controllers\Router;
 
@@ -10,7 +14,7 @@ if($action != null){
     switch($action){
         case "home":
             $route = new Router();
-            require Router::LINK_HOME;
+            echo $twig->render('home.twig');
             break;
 
         case "signin":
