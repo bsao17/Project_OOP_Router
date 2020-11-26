@@ -9,14 +9,14 @@ class Router{
     const LINK_HOME = "src/views/home.html";
     const LINK_SIGNIN = "src/views/signin.html";
 
-    const action = [
+    const ACTION = [
         "home",
         "signin"
     ];
 
-    public function getRoute($route){
-        if(in_array(Router::action, $route)){
-            echo sprintf("index.php/? %s", $route);
+    public function getRoute(array $route){
+        if(in_array(Router::ACTION, $route)){
+            $_GET = sprintf("index.php/? %s", $route);
         }
     }
 }
