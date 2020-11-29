@@ -3,7 +3,10 @@
 namespace src\controllers;
 
 require "vendor/autoload.php";
+
 use Symfony\Component\HttpFoundation\Request;
+use Twig\Environment;
+
 
 class Route
 {
@@ -27,8 +30,16 @@ class Route
     }
 
     public function getRoute(){
-        if (in_array( $this->action, $this->link)){
-            
+        if (in_array( $this->action, $this->links)){
+           $template = Route::templateTwig("home.twig");
+           return $template;
         }
+    }
+
+    public static function templateTwig($temp){
+        $loader = new \Twig\Loader\FilesystemLoader('src/views/templates');
+        $twig = new Environment($loader, [ "cache" =>false ]);
+        echo $twig->render($temp);
+        return;
     }
 }
