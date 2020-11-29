@@ -25,4 +25,10 @@ class Route
         $this->action = $this->request->query->get('action');
         return $this->action;
     }
+
+    public function getRoute(){
+        if (in_array( $this->action, $this->link)){
+            
+        }
+    }
 }
