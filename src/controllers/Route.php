@@ -36,7 +36,6 @@ class Route
     }
     
     public function getRoute($action){
-        $this->action = $action;
         if (in_array( $this->action, $this->path)){
             $page = new Navigation();
             eval("\$page->\$action();");
