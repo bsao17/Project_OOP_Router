@@ -12,7 +12,7 @@ class Route
 {
     protected Request $request;
     public $action;
-    public array $links = ["home", "contact", "billets", "signin"];
+    public array $path = ["home", "contact", "billets", "signin"];
     
     public function __construct()
     {
@@ -37,7 +37,7 @@ class Route
     
     public function getRoute($action){
         $this->action = $action;
-        if (in_array( $this->action, $this->links)){
+        if (in_array( $this->action, $this->path)){
             $page = new Navigation();
             eval("\$page->\$action();");
             return;
