@@ -12,7 +12,7 @@ class Route
 {
     protected Request $request;
     public $action;
-    public array $links = ["home", "contact", "billets"];
+    public array $links = ["home", "contact", "billets", "signin"];
     
     public function __construct()
     {
@@ -43,7 +43,5 @@ class Route
             return;
             
         }
-    }
-
-    
+    }    
 }

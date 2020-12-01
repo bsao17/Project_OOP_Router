@@ -21,6 +21,10 @@ class Navigation
         return self::templateTwig("contact.twig");
     }
 
+    public function signin(){
+        return self::templateTwig("signin.twig");
+    }
+
     public static function templateTwig($temp){
         $loader = new \Twig\Loader\FilesystemLoader('src/views/templates');
         $twig = new Environment($loader, [ "cache" =>false ]);
