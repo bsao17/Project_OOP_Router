@@ -4,15 +4,15 @@ namespace src\controllers;
 
 require "vendor/autoload.php";
 
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
-use Twig\Environment;
 
 
 class Route
 {
-    private $request;
+    protected Request $request;
     public $action;
-    public $links = ["home", "contact", "billets"];
+    public array $links = ["home", "contact", "billets"];
     
     public function __construct()
     {
@@ -25,21 +25,25 @@ class Route
             $_FILES,
             $_SERVER
         );
-        $this->action = $this->request->query->get('action');
+        if($_SERVER['REQUEST_METHOD'] == "GET"){
+            $this->action = $this->request->query->get('action');
+        }else if ($_SERVER['REQUEST_METHOD'] == "POST"){
+            $this->action = $this->request->request->get('action');
+        }else{
+            throw new Exception("Request method inconnu");
+        }
         return $this->action;
     }
-
-    public function getRoute(){
+    
+    public function getRoute($action){
+        $this->action = $action;
         if (in_array( $this->action, $this->links)){
-           $template = Route::templateTwig("home.twig");
-           return $template;
+            $page = new Navigation();
+            eval("\$page->\$action();");
+            return;
+            
         }
     }
 
-    public static function templateTwig($temp){
-        $loader = new \Twig\Loader\FilesystemLoader('src/views/templates');
-        $twig = new Environment($loader, [ "cache" =>false ]);
-        echo $twig->render($temp);
-        return;
-    }
+    
 }
