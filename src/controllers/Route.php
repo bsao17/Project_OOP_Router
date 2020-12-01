@@ -30,7 +30,7 @@ class Route
         }else if ($_SERVER['REQUEST_METHOD'] == "POST"){
             $this->action = $this->request->request->get('action');
         }else{
-            throw new Exception("Request method inconnu");
+            throw new Exception("Unknown request method");
         }
         return $this->action;
     }
