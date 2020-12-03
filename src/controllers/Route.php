@@ -17,14 +17,7 @@ class Route
     public function __construct()
     {
         $this->request = Request::createFromGlobals();
-        $this->request = new Request(
-            $_GET,
-            $_POST,
-            [],
-            $_COOKIE,
-            $_FILES,
-            $_SERVER
-        );
+        
         if($_SERVER['REQUEST_METHOD'] == "GET"){
             $this->action = $this->request->query->get('action');
         }else if ($_SERVER['REQUEST_METHOD'] == "POST"){
